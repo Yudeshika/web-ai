@@ -1,4 +1,4 @@
 @extends('layouts.theme1')
 @section('content')
-<welcome/>
+<about/>
 @endsection
