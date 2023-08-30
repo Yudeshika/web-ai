@@ -1,8 +1,104 @@
-# Import BeautifulSoap & requests & mysql connector
+# Import BeautifulSoap & requests & mysql connector & copy_tree
 from bs4 import BeautifulSoup
 import requests
 import mysql.connector
 import json
+from distutils.dir_util import copy_tree
+
+def getContentInTag(section):
+
+    content = {}
+
+    # Write Content to DB
+    h1s = section.find_all('h1')
+    index = 1;
+    for h1 in h1s:
+        if h1.string and bool(h1.string.strip()):
+            content['h1_'+str(index)] = ""+h1.text+""
+            h1.string.replace_with("{{ contents[0]."+'h1_'+str(index)+" }}")
+            index = index + 1
+
+    h2s = section.find_all('h2')
+    index = 1;
+    for h2 in h2s:
+        if h2.string and bool(h2.string.strip()):
+            content['h2_'+str(index)] = ""+h2.text+""
+            h2.string.replace_with("{{ contents[0]."+'h2_'+str(index)+" }}")
+            index = index + 1
+                
+    h3s = section.find_all('h3')
+    index = 1;
+    for h3 in h3s:
+        if h3.string and bool(h3.string.strip()):
+            content['h3_'+str(index)] = ""+h3.text+""
+            h3.string.replace_with("{{ contents[0]."+'h3_'+str(index)+" }}")
+            index = index + 1
+                
+    h4s = section.find_all('h4')
+    index = 1;
+    for h4 in h4s:
+        if h4.string and bool(h4.string.strip()):
+            content['h4_'+str(index)] = ""+h4.text+""
+            h4.string.replace_with("{{ contents[0]."+'h4_'+str(index)+" }}")
+            index = index + 1
+                
+    h5s = section.find_all('h5')
+    index = 1;
+    for h5 in h5s:
+        if h5.string and bool(h5.string.strip()):
+            content['h5_'+str(index)] = ""+h5.text+""
+            h5.string.replace_with("{{ contents[0]."+'h5_'+str(index)+" }}")
+            index = index + 1
+
+    h6s = section.find_all('h6')
+    index = 1;
+    for h6 in h6s:
+        if h6.string and bool(h6.string.strip()):
+            content['h6_'+str(index)] = ""+h6.text+""
+            h6.string.replace_with("{{ contents[0]."+'h6_'+str(index)+" }}")
+            index = index + 1
+                
+    ps = section.find_all('p')
+    index = 1;
+    for p in ps:
+        if p.string and bool(p.string.strip()):
+            content['p_'+str(index)] = ""+p.text+""
+            p.string.replace_with("{{ contents[0]."+'p_'+str(index)+" }}")
+            index = index + 1
+                
+    spans = section.find_all('span')
+    index = 1;
+    for span in spans:
+        if span.string and bool(span.string.strip()):
+            content['span_'+str(index)] = ""+span.text+""
+            span.string.replace_with("{{ contents[0]."+'span_'+str(index)+" }}")
+            index = index + 1
+
+    imgTags = section.find_all('img')
+    index = 1;
+    for img in imgTags:
+        if img.has_attr('alt'):
+            content['image_'+str(index)] = {"alt": img['alt'], "src": img['src'], "width": img.attrs.get('width', '100'), "height": img.attrs.get('height', '100')}
+        else:
+            content['image_'+str(index)] = {"alt": '-', "src": img['src'], "width": img.attrs.get('width', '100'), "height": img.attrs.get('height', '100')}
+        img[':src'] = "contents[0]."+"image_"+str(index)+".src"
+        img[':alt'] = "contents[0]."+"image_"+str(index)+".alt"
+        del img['src']
+        del img['alt']
+        index = index + 1
+                
+    aTags = section.find_all('a', href=True)
+    index = 1;
+    for a in aTags:
+        if a.string is not None:
+            content['button_'+str(index)] = {"text": a.text, "link": a['href'], "open": "_self"}
+            a.string.replace_with("{{ contents[0]."+'button_'+str(index)+".text }}")
+            a[':href'] = "contents[0]."+"button_"+str(index)+".link"
+            a[':target'] = "contents[0]."+"button_"+str(index)+".open"
+            del img['href']
+            del img['target']
+            index = index + 1
+    return content
 
 # Import os library for folder reading
 import os
@@ -83,8 +179,11 @@ for file in files:
             # Read all script tags
             scripts = head.find_all('script')
             for script in scripts:
-                script['src'] = "{{ url('"+script['src']+"') }}"
-                layoutFile.write(str(script)+'\n')
+                if script.has_attr('src'):
+                    script['src'] = "{{ url('"+script['src']+"') }}"
+                    layoutFile.write(str(script)+'\n')
+                else:
+                    layoutFile.write(str(script)+'\n')
             
             
             # Ending writing layout file Head section
@@ -95,15 +194,24 @@ for file in files:
 
         # Start Reading Body Tag
         body = soup.body
-        layoutFile.write("<body id='app'>\n")
 
-        # Start Reading Menu
+        # Start Reading Menu via header tag
+        if file.endswith('index.html'):
+            layoutFile.write("<body id='app'>\n")
+            headers = body.find_all('header')
+            for header in headers:
+                layoutFile.write(str(header)+'\n')
 
         # Writing separate page files
         pageName = 'welcome' if file.endswith('index.html') else os.path.basename(file).replace(".html", "")
         pageFile = open(os.path.join(current, 'resources/views/'+pageName+'.blade.php'), 'w')
 
-        
+        # Create pages sub-folder for page if not exist
+        try:
+            os.mkdir(os.path.join(current, 'resources/js/pages/'+pageName))
+        except OSError as error:
+            print("Directory can not be created..")
+
 
         pageFile.write("@extends('layouts."+theme+"')\n")
         pageFile.write("@section('content')\n")
@@ -121,86 +229,32 @@ for file in files:
         components = 'components: {\n'
 
         for section in sections:
-            if str(section.name) == 'section':
-                # Empty JSON Object
-                content = {}
+            if str(section.name) == 'section' or str(section.name) == 'div':
 
-                # Create pages sub-folder for page if not exist
-                try:
-                    os.mkdir(os.path.join(current, 'resources/js/pages/'+pageName))
-                except OSError as error:
-                    print("Directory can not be created..")
+                content_arr = []
+                contentIndex = 0
 
+                repeaters = section.find_all("div", {"class": "repeat"})
+                if len(repeaters)>0:
+                    print('AVAILABLE REPEATERS..')
+                    # Can have multiple repeaters within a single section : Here we are looping through them
+                    for repeater in repeaters:
+                        # Get single Div/Block set or block to be repeated
+                        singleBlocks = repeater.children
+                        for singleBlock in singleBlocks:
+                            content = getContentInTag(singleBlock)
+                            print(content)
+                            content_arr[contentIndex] = content
+                            contentIndex = contentIndex + 1
 
-                # Write Content to DB
-                h1s = section.find_all('h1')
-                index = 1;
-                for h1 in h1s:
-                    content['h1_'+str(index)] = ""+h1.text+""
-                    h1.string.replace_with("{{ contents[0]."+'h1_'+str(index)+" }}")
-                    index = index + 1
-
-                h2s = section.find_all('h2')
-                index = 1;
-                for h2 in h2s:
-                    content['h2_'+str(index)] = ""+h2.text+""
-                    h2.string.replace_with("{{ contents[0]."+'h2_'+str(index)+" }}")
-                    index = index + 1
-                
-                h3s = section.find_all('h3')
-                index = 1;
-                for h3 in h3s:
-                    content['h3_'+str(index)] = ""+h3.text+""
-                    h3.string.replace_with("{{ contents[0]."+'h3_'+str(index)+" }}")
-                    index = index + 1
-                
-                h4s = section.find_all('h4')
-                index = 1;
-                for h4 in h4s:
-                    content['h4_'+str(index)] = ""+h4.text+""
-                    h4.string.replace_with("{{ contents[0]."+'h4_'+str(index)+" }}")
-                    index = index + 1
-                
-                h5s = section.find_all('h5')
-                index = 1;
-                for h5 in h5s:
-                    content['h5_'+str(index)] = ""+h5.text+""
-                    h5.string.replace_with("{{ contents[0]."+'h5_'+str(index)+" }}")
-                    index = index + 1
-
-                h6s = section.find_all('h6')
-                index = 1;
-                for h6 in h6s:
-                    content['h6_'+str(index)] = ""+h6.text+""
-                    h6.string.replace_with("{{ contents[0]."+'h6_'+str(index)+" }}")
-                    index = index + 1
-                
-                ps = section.find_all('p')
-                index = 1;
-                for p in ps:
-                    content['p_'+str(index)] = ""+p.text+""
-                    p.string.replace_with("{{ contents[0]."+'p_'+str(index)+" }}")
-                    index = index + 1
-                
-                spans = section.find_all('span')
-                index = 1;
-                for span in spans:
-                    content['span_'+str(index)] = ""+span.text+""
-                    span.string.replace_with("{{ contents[0]."+'span_'+str(index)+" }}")
-                    index = index + 1
-
-                aTags = section.find_all('a')
-                index = 1;
-                for a in aTags:
-                    if a.string is not None:
-                        content['button_'+str(index)] = {"text": a.text, "link": a['href'], "open": "_self"}
-                        a.string.replace_with("{{ contents[0]."+'button_'+str(index)+".text }}")
-                        a[':href'] = "contents[0]."+"button_"+str(index)+".link"
-                        a[':target'] = "contents[0]."+"button_"+str(index)+".open"
-                        index = index + 1
+                else:
+                    print('NOT AVAILABLE REPEATERS..')
+                    # Collect JSON Object If its only one time block
+                    content = getContentInTag(section)
+                    content_arr = [content]
 
                 # Save Data contents in DB
-                content_arr = [content]
+                # print(content_arr)
                 json_content = json.dumps(content_arr)
                 val = (pageName, 'Section'+str(sectionNo), json_content)
                 cursor.execute(sql, val)
@@ -215,7 +269,7 @@ for file in files:
                 vueFile.write(str(section)+'\n')
                 vueFile.write('</block>\n')
                 vueFile.write('</template>\n')
-                vueFile.write('<script>\n')
+                vueFile.write('<script lang="ts">\n')
                 vueFile.write('\n')
                 vueFile.write('export default {\n')
                 vueFile.write('\n')
@@ -250,20 +304,45 @@ for file in files:
         
         pageFile.write("<"+pageName+"/>\n")
 
-        # Write yield element within the body tag.
-        layoutFile.write("@yield('content')\n")
+        # Write end section tag in Page File.
         pageFile.write("@endsection\n")
         pageFile.close()
 
-        # Read all script tags
-        scripts = body.find_all('script')
-        for script in scripts:
-            script['src'] = "{{ url('"+script['src']+"') }}"
-            layoutFile.write(str(script)+'\n')
-
-        layoutFile.write("</body>\n")
-        # Ending the layout file 
-        layoutFile.write('</html>\n')
-
         
-layoutFile.close()
+
+        # Start Reading Footer via footer tag | Only on index file
+        if file.endswith('index.html'):
+            # Write yield element within the body tag.
+            layoutFile.write("<div>\n")
+            layoutFile.write("@yield('content')\n")
+            layoutFile.write("</div>\n")
+
+            footers = body.find_all('footer')
+            for footer in footers:
+                layoutFile.write('<div>\n')
+                layoutFile.write(str(footer)+'\n')
+                layoutFile.write('</div>\n')
+
+            # Read all script tags
+            scripts = body.find_all('script')
+            for script in scripts:
+                if script.has_attr('src'):
+                    script['src'] = "{{ url('"+script['src']+"') }}"
+                    layoutFile.write(str(script)+'\n')
+                else:
+                    layoutFile.write(str(script)+'\n')
+
+            # Ending the body tag of the layout file
+            layoutFile.write("</body>\n")
+            # Ending the layout file 
+            layoutFile.write('</html>\n')
+
+            # Save Layout File
+            layoutFile.close()
+
+    # Move other resource folders like css, js, images and web-fonts to the public folder
+    elif os.path.isdir(folder+"/"+file):
+        print('Folder found in input folder: '+folder+"/"+file)
+        copy_tree(folder+"/"+file, os.path.join(current, 'public/')+file)
+        
+

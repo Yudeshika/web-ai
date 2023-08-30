@@ -274,7 +274,6 @@
             file: {
                 immediate: true,
                 handler (val, oldVal) {
-                    console.log('LOADING DATA CALLED...')
                     this.loadData();
                 }
             }

@@ -1,0 +1,385 @@
+
+/*=========================
+    Responsive Style
+==========================*/
+@media only screen and (min-width: 1101px) and (max-width: 1400px) {
+  header, .homepage-two.homepage-three.header{min-height: 1400px;}
+  header .col-lg-7 , header .col-lg-5, .homepage-two.homepage-three.header .col-lg-4 , .homepage-two.homepage-three.header .col-lg-8{flex: 100%;width: 100%;}
+  .slider-btn .kids-active-btn {font-size: 18px;}
+  .navbar-light .navbar-nav .nav-link{margin-left: 25px;}
+  .homepage-two.header{min-height: 1000px;}
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1919px) {
+
+	  header, .homepage-two.homepage-three.header{min-height: 1400px;}
+  	header, .homepage-two.homepage-three.header {
+	  min-height: 956px;
+	}
+	 .header-img {
+		  position: absolute;
+		  bottom: 5%;
+		  right: -28%;
+		  z-index: 1;
+	}
+	.header-img img {
+	  width: 65%;
+	}
+.slider-btn .kids-active-btn{font-size: 18px;}
+  .activitics-main-img {display: flex;align-items: center;min-height: 500px;}
+  .navbar-light .navbar-nav .nav-link{margin-left: 25px;}
+  .header-top-info ul li{font-size: 14px;}
+  .homepage-two.header{min-height: 1000px;}
+  .about-text {padding: 0px 0px 30px 20px;}
+  .homepage-two-bottom {padding: 120px 0px 0px 0px;}
+  .counter-area.homepage-three .airplane{display: none;}
+  .callaction-shape-two img {width: 300px;}
+  header.about-page .header-img {right: -16%;}
+  .nav-tabs .nav-link{padding: 8px 20px;}
+  .course-feature-info, .course-feature-slider-area{padding: 15px;}
+  .course-feature-info .d-flex.justify-content-between p, .course-feature-info .d-flex.justify-content-between span {font-size: 14px;}
+  .course-feature-info .d-flex.justify-content-between i {margin-right: 8px;}
+  .wiget-tags ul li {width: 45%;}
+  .wiget-tags {min-height: 250px;}
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1600px) {
+  .airplane{
+    opacity: .2;
+  }
+}
+
+/* Tablet Layout: 768px */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .mean-container .mean-bar {
+      left: 0;
+      top: 0px;
+      background: #2c3035 url('../images/logo.png');
+      background-repeat: repeat;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: top left;
+  }
+    .is-sticky .menu, .homepage-two .menu{display: none;}
+    .is-sticky .menu-bar{
+        top: 25px;
+    }
+	section{padding: 80px 0px;}
+	.section-title h2 {font-size: 45px;}
+  header{min-height: 900px;}
+	header .col-md-7, header .col-md-5, .homepage-two-bottom .col-md-4, .pagetwo.activities .col-12.col-md-7.col-lg-7, .pagetwo.video .col-12.col-md-7.col-lg-7, .homepage-two.homepage-three .col-md-8.col-sm-12.col-lg-8{flex: 100%;width: 100%;}
+	.header-text{min-height: 320px;}
+	.header-text h1{font-size: 45px;}
+	.header-img{  width: 60%;right: 18%;transform: translateX(0%);}
+	.kids-active-btn{padding: 10px 34px;}
+	.header-box-single{min-height: 370px;}
+	.about-text {padding:0px 0px 30px 0px;}
+	.activities .col-md-4{flex: 100%;width: 100%;}
+	.activities-single-box{background: #fff;}
+	.activitics-main-img {width: 60%;margin: 0px auto;}
+	.classes-bottom-img img{height: 450px;}
+	.classes-bottom-text{padding-left: 0;min-height: auto;}
+	.testimonial {padding: 40px 0;}
+	.teachers .section-title h2{width: 100%;}
+	.call-shape-one, .call-shape-two, .call-shape-three, .call-shape-four{visibility: hidden;}
+	.header-top{height: 10px;}
+	.homepage-two .menu {background: transparent;}
+	.header-slider-item h1 {font-size: 50px;}
+	.header-slider-item{padding-top: 0px;}
+	.homepage-two header{min-height: 650px; }
+	.homepage-box-single{margin-bottom: 50px;}
+	.pagetwo.activities .col-12.col-md-5.col-lg-5{display: none;}
+	.pagetwo.gallery {padding: 20px 0px;}
+	.video-img{display: none;}
+	.contact-img {position: absolute;}
+	.homepage-two.homepage-three.header .header-text h1{font-size: 50px;}
+	.homepage-two.homepage-three.header .header-img {bottom: -33px;}
+	.about.homepage-three .col-12.col-md-6.col-lg-6{flex: 100%;width: 100%;}
+	.counter-area.homepage-three .airplane, .service-shape-two{display: none;}
+	.services.homepage-three .section-title p{width: 80%;}
+  .pagetwo.homepage-three.teachers{position: static;}
+  .pagetwo.homepage-three.video{height: 450px;}
+  .homepage-three.video-main {width: 690px;}
+  .pricing-plan .col-md-4{flex: 50%;max-width: 50%;margin-bottom: 30px;}
+  .callaction-shape-two{visibility: hidden;}
+  .service-shape-one{right: 0;}
+  .about-cloud-img-one, .about-cloud-img-two{display: none;}
+  .single-course .col-md-4, .single-course .col-md-8, .bloge-page .col-md-4, .bloge-page .col-md-8 {flex: 100%;max-width: 100%;margin-bottom: 30px;}
+  .course-fature-slider.owl-carousel img {height: 350px;}
+  .nav-tabs .nav-link{padding: 10px 20px;}
+
+}
+
+
+
+ /* Mobile Layout: 320px  */
+
+@media only screen and (max-width: 767px) {
+  body{
+    overflow-x: hidden;
+    width: 100%;
+  }
+  .g-bettarfly-two{
+    display: none;
+  }
+  .navbar-light .navbar-brand{
+    display: none;
+  }
+  .mean-container .mean-nav ul li a{
+    text-transform: capitalize;
+    text-align: center;
+  }
+  .box-text {
+    top: 8%;
+  }
+  .animation img, .animation-two img {
+    display: none;
+  }
+  .mean-container a.meanmenu-reveal{
+    padding: 21px 20px 11px 0px;
+  }
+  .mean-container .mean-bar {
+    left: 0;
+    top: 0px;
+    background: #2c3035 url('../images/logo.png');
+    background-size: 60px;
+    background-repeat: no-repeat;
+    background-position: 10px 13px;
+    height: 60px;
+  }
+   .header-text-three{
+    display: block !important;
+}
+.homepage-three .header-text .text {
+    margin-top: 50px;
+}
+.homepage-two.homepage-three.header .header-img {
+    bottom: 212px;
+    right: 34px;
+    width: 80%;
+    bottom: 0.3%;
+}
+  .haeader-slider-form {
+    width: 300px;
+  }
+  .haeader-slider-form input{
+    width: 70%;
+  }
+  .btn-search{
+    padding: 7px 10px;
+  }
+  .header-slider {
+    min-height: 400px;
+  }
+  .header-shape-one, .header-shape-two, .header-shape-three{
+    z-index: -22;
+  }
+  .single-blog.d-flex {
+    display: block !important;
+}
+.blog-image{width: 100%;}
+  .blog-image img {
+    height: auto;
+    width: 100%;
+    border-radius: 15px;
+}
+.call-to-action{
+  padding: 30px 0px;
+}
+.blog-image{
+  height: auto;
+}
+footer {
+    padding: 150px 0px 50px 0px;
+}
+.pagetwo.activities .section-title {
+    padding-top: 0px;
+}
+.pagetwo.activities {
+    padding: 0px 0px;
+}
+    section, .pagetwo.gallery{padding: 40px 0px;}
+    .section-title{margin-bottom: 20px;}
+    .section-title h2 {font-size: 30px;}
+    p, .breadcrumb .breadcrumb-item{font-size: 16px;}
+    .kids-active-btn{padding: 10px 36px;font-size: 16px;}
+    span.title-span{letter-spacing: 0px;font-size: 14px;}
+    header{min-height: 750px;}
+    header .menu{padding: 10px 0px;}
+    .is-sticky .menu, .homepage-two .menu{display: none;}
+    .is-sticky .menu-bar{top: 25px;}
+    .header-text h1{font-size: 26px;line-height: 40px;margin: 10px 0px;}
+    .header-text p{font-size: 16px; padding: 10px 0px 10px 0px;}
+    .header-text{min-height: 400px;}
+    .cloud img{height: 70px;}
+    .header-bottom{margin-top: 0;}
+    .header-box-single{padding: 30px 30px 30px 30px;margin-bottom: 30px;min-height: 300px;}
+    .header-box-single h4{font-size: 20px;}
+    .counter-area{padding: 40px 0px;}
+    .about-cloud-img-one img, .about-cloud-img-two img{width: 100px;}
+    .about-text {padding: 20px 0px 0px 20px;}
+    .about-main-cloud-two {bottom: 0%;left: 50%; display: none;}
+    .about-main-shape-two {opacity: .5;}
+    .activitics-main-img {margin: 20px 0px;}
+    .activities-single-box.d-flex.justify-content-between.m-left {padding: 30px 2px 20px 30px;}
+    .about-text h4{font-size: 30px;}
+    .about-text p{padding: 5px 0px 10px 0px}
+    .airplane img{visibility: hidden;}
+    .activities-single-box{padding: 30px 30px 20px 20px;background: #fff;}
+    .our-classes .section-title p{width: 100%;}
+    .slider-title{width: 100%;}
+    .slider-description{padding: 30px 10px;}
+    .slider-btn .kids-active-btn{font-size: 20px;}
+    .classes-bottom-img {width: 60%;margin: 0px auto;}
+    .classes-bottom-img img{height: auto;}
+    .classes-bottom-text{padding-left: 10px; margin-top: -50px;}
+    .classes-bottom-text h2{font-size: 30px; line-height: 40px;}
+    .classes-cloud-two{left: 50%;bottom: 23%;display: none;}
+    .classes-form{padding: 0px; background: transparent;}
+    .classes-form input, .classes-form select{padding: 10px ; margin-bottom: 20px; background: #fff;}
+    .testimonial{padding: 40px 0px;}
+    .testimonial .testimonial_single p, .teachers .section-title h2, .teacher-profile .teacher-detiles-box, .single-course .section-title p{width: 100%;}
+    .testimonial-shape-four{top: -8%;}
+    .testimonial-shape-three{top: 69%;}
+    .testimonial .testimonial_single p{padding: 0px 0px 10px 0px;}
+    .testimonial .testimonial_single .reviewer h4{font-size: 20px;}
+    .blog-shape-one, .call-shape-one, .call-shape-two{visibility: hidden;}
+    .call-to-action-text h3{font-size: 30px;}
+    .call-to-action-from input[type="text"]{width: 76%;padding: 16px;}
+    .call-to-action-from input[type="submit"] {width: 50%;padding: 15px;}
+    footer{text-align: center;}
+    .footer-social{margin-bottom: 30px;}
+    footer h4{margin: 15px 0px 15px 0px;}
+    .footer-link .nav-link{padding: .2rem 1rem;}
+    .footer-form{margin-bottom: 30px;}
+      /* second page design */
+      .header-top{display: none;}
+      .header-slider-item{padding-top: 40px;}
+      .header-slider-text, .header-slider-item p{width: 100%;}
+      .header-slider-item h1{font-size: 30px;}
+      .haeader-slider-form input{width: 300px;}
+      .homepage-two header{min-height: 600px;}
+      .homepage-two-bottom {
+        padding: 40px 10px 0px 10px;
+      }
+      .box-icon{width: 100px;height: 100px;padding: 30px 0px 0px 0px;}
+      .homepage-box-single{margin-bottom: 50px;}
+      .homepage-box-single.box-one h4 {font-size: 20px;}
+      .home-two.single-counter{margin-bottom: 30px;}
+      .pagetwo.service-box{margin: 0px 20px 40px 20px;}
+      .pagetwo.activities{height: auto;}
+      .pagetwo.video .video-play{margin-top: 40px;min-height: 200px;margin-left: 20px;}
+      .pagetwo.video{padding: 40px 0px;}
+      .pagetoreview .slider-team{margin: 40px 10px 50px 10px;padding: 30px 20px 50px 30px;}
+      .pagetoreview .slider-team p {padding: 20px 0px;}
+      .owl-theme .owl-dots .owl-dot span{margin: 0px 7px;}
+      .pagetwo.teachers .teacher-slider-item{padding: 30px 20px;}
+      .pagetwo.our-classes .pagetwo-price{visibility: hidden;}
+      .contact-form input{width: 100%;}
+      .contact-shap, .contact-shap-two{z-index: -1;}
+      .header-slider.owl-carousel.owl-theme i.fa.fa-angle-left{top: 100%;left: 10%;}
+      .header-slider.owl-carousel.owl-theme i.fa.fa-angle-right{top: 100%;right: 10%;}
+      .prebetterfly-one img, .prebetterfly-two img{width: 100px;}
+      /*homepage three*/
+		.homepage-two.homepage-three.header .header-text h1, .homepage-three.video-main h2{
+		font-size: 34px;width: 100%;
+		}
+		.homepage-two.homepage-three.header .header-text p, .services.homepage-three .section-title p, .pricing-plan .section-title p, .call-to-action.homepage-three .section-title h2{width: 100%;}
+		.homepage-two.homepage-three.header .header-text {
+		min-height: 200px;
+		}
+    .about-page .header-img{text-align: right;}
+    .about-page .header-img img {
+      width: 60%;
+    }
+		.homepage-two.homepage-three.header{
+		  min-height: 700px;
+		}
+    .homepage-two.homepage-three.header .header-img {
+      bottom: -2.7%;
+}
+    .homepage-three.video-main h2{text-align: center;}
+		.homepage-two.homepage-three.header .cloud{bottom: -4%;width: 100%;}
+		.homethree-shape-two, .homethree-shape-one, .service-shape-one, .service-shape-two, .pagetwo.our-classes.homepage-three .classes-slider.owl-carousel.owl-theme i.fa.fa-angle-right, .pagetwo.our-classes.homepage-three .classes-slider.owl-carousel.owl-theme i.fa.fa-angle-left, .callaction-shape-two{visibility: hidden;}
+		.homepage-two-bottom.homepage-three .homepage-box-single p,{padding-bottom: 20px;}
+		.homepage-two-bottom.homepage-three .homepage-box-single .box-icon{padding-top: 20px;}
+		.homepage-two-bottom.homepage-three .homepage-box-single h4{padding: 10px 0px 0px 0px;}
+		.homepage-three .about-text {padding: 20px 0px 20px 20px;}
+		.homepage-three .single-counter{
+			min-height: 150px !important;
+		}
+
+		.testimonial .testimonial_single p{min-height: 200px;}
+		.pagetwo.homepage-three.video{min-height: 700px;}
+		.pagetwo.homepage-three.teachers .teacher-slider-item, .homepage-three.video-main{width: 300px;}
+		.single-price-table{margin-bottom: 30px;}
+		.callaction-shape-one, .call-shape-four{z-index: -1;}
+		header.about-page .header-text {
+		  min-height: 200px;
+		  position: relative;
+		  z-index: 1;
+      margin: 70px 60px 60px 10px;
+		}
+    .aboutcloud{width:  100%;}
+    .course-duration h4{font-size: 20px;}
+    .single-course-details, .course-tabs{padding: 20px 0px;}
+    .nav-tabs .nav-link{border: transparent;}
+    #myTab li{margin: 0px auto;}
+    .course-feature-info, .tab-content, .course-feature-slider-area, .single-blog-post {padding: 20px 10px;}
+    .course-feature-slider-area p{font-size: 14px;}
+    .wiget-tags ul li{
+      width: 100%;
+      float: none;
+    }
+  .single-blog-post h2{line-height: 34px;}
+  .blog-author {
+    display: flex;
+    justify-content: space-between;
+  }
+  .writter-share ul{width: 100%;}
+  .writter-share ul li {
+    margin-bottom: 30px;
+    float: left;
+    margin-right: 15px;
+  }
+  .writter-img img{width: 90px}
+  .post-page-bottom.d-flex.justify-content-between{
+    display: inline !important;
+  }
+  .teacher-shape-three, .teacher-shape-two{z-index: -1}
+  .blog-page-sidebar{
+    margin-top: 30px;
+  }
+
+
+}
+
+
+
+/* Wide Mobile Layout: 480px */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+
+    .header-img{bottom: -10%;}
+    .classes-cloud-two{z-index: -1;}
+    .header-img img{width: 80%;}
+    .header-bottom .col-sm-4{
+    	flex: 100%;
+		width: 100%;
+    }
+    .header-box-single.box-three::before, .header-box-single.box-one::before,.header-box-single.box-two::before {height: 100%;border-radius: 15px;}
+    .activitics-main-img, .video-img {width: 80%;margin: 0px auto;}
+    .classes-bottom-text{padding-left: 0;}
+    .homepage-box-single{padding: 0;}
+    .homepage-two.homepage-three.header .header-img {
+	  bottom: -3.7%;
+	}
+	.homepage-three.video-main{
+		width: 500px;
+	}
+
+	.about-page .header-img{width: 60%; bottom: 0;}
+
+
+
+
+} 

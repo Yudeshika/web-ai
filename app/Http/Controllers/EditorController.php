@@ -101,7 +101,7 @@ class EditorController extends Controller
     {
         if(Auth::check()){
             $folder = $request->input('folder');
-            $file = $request->input('file');
+            $file = $request->file('file');
             $file_name = uniqid().'.'.$file->extension();
             $name = '/content/'.$folder.'/'.$file_name;
             Storage::disk("public")->put($name, file_get_contents($file));

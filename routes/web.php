@@ -25,3 +25,47 @@ Route::post('/image-store', [App\Http\Controllers\EditorController::class, 'uplo
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/index.html', function () {
+    return view('welcome');
+});
+
+
+Route::get('/about.html', function () {
+    return view('about');
+});
+
+Route::get('/blog-page.html', function () {
+    return view('blog-page');
+});
+
+Route::get('/contact.html', function () {
+    return view('contact');
+});
+
+Route::get('/gallery.html', function () {
+    return view('gallery');
+});
+
+Route::get('/programs.html', function () {
+    return view('programs');
+});
+
+Route::get('/single-blog.html', function () {
+    return view('single-blog');
+});
+
+Route::get('/single-course.html', function () {
+    return view('single-course');
+});
+
+
+Route::get('/teacher.html', function () {
+    return view('teacher');
+});
+
+
+Route::get('/teacher-profile.html', function () {
+    return view('teacher-profile');
+});
+

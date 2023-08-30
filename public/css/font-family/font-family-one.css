@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&amp;family=Open+Sans:wght@300;400;500;600;700&amp;display=swap');
+
+h1,h2,h3,h4,h5,h6{
+    font-family: 'Abril Fatface', cursive;
+}
+a, span{
+    font-family: 'Open Sans', sans-serif;
+}
+p{
+    font-family: 'Open Sans', sans-serif;
+}
